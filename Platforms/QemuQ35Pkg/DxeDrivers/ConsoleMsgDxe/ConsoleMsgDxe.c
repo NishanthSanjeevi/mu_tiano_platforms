@@ -10,17 +10,24 @@
 #include <Library/DebugLib.h>
 #include <Library/UefiDriverEntryPoint.h>
 #include <Library/UefiBootServicesTableLib.h>
+#include <Library/MsPlatformDebugMessage.h>
+
+#define CPUID_BRAND_STRING1  0x80000002
+#define CPUID_BRAND_STRING2  0x80000003
+#define CPUID_BRAND_STRING3  0x80000004
+#define MAX_MESSAGE_LENGTH  64
+STATIC CHAR8  DbgMessage[MAX_MESSAGE_LENGTH];
 
 /**
    Dxe Entry Point
 **/
 
-EFI_STATUS
-EFIAPI
-ConsoleMsgEntryPoint (
-    IN EFI_HANDLE           ImageHandle,
-    IN EFI_SYSTEM_TABLE     *SystemTable
-)
+//EFI_STATUS
+//EFIAPI
+//ConsoleMsgEntryPoint (
+  //  IN EFI_HANDLE           ImageHandle,
+    //IN EFI_SYSTEM_TABLE     *SystemTable
+//)
 
 
 CHAR8 *
@@ -41,12 +48,21 @@ GetCpuBrand (
   AsmCpuid (CPUID_BRAND_STRING3, (UINT32 *)&(DbgMessage[0x20]), (UINT32 *)&(DbgMessage[0x24]), (UINT32 *)&(DbgMessage[0x28]), (UINT32 *)&(DbgMessage[0x2C]));
 
   // Make sure mMessage is terminated and return
-  //DbgMessage[0x30] = 0x00;
-  DEBUG((DEBUG_INFO, "[%a] - Console Debug message : %r\n",__FUNCTION__))
-  //return DbgMessage;
+  DbgMessage[0x30] = 0x00;
+  //DEBUG((DEBUG_INFO, "[%a] - Console Debug message : %r\n",__FUNCTION__))
+  return DbgMessage;
+
 }
 
-//{
-  //  DEBUG ((DEBUG_ERROR, "[%a] - Console Debug message : %r\n",__FUNCTION__));
-    //return EFI_SUCCESS;
-//}
+
+VOID
+EFIAPI
+DisplayPlatformSpecificFwMessages (
+  IN OUT UINT32  *Row
+  )
+{
+  EFI_STATUS  Status;
+  DEBUG((DEBUG_INFO,"[%a] - CPU Branding:  %d\n",Status,GetCpuBrand ()));
+  //Print (L"\n");
+}
+
