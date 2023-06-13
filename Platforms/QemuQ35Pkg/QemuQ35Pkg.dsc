@@ -330,6 +330,7 @@
     BaseCryptLib|CryptoPkg/Library/BaseCryptLib/SmmCryptLib.inf
 
   [Components.IA32]
+    
     CryptoPkg/Driver/CryptoPei.inf {
         <LibraryClasses>
           BaseCryptLib|CryptoPkg/Library/BaseCryptLib/PeiCryptLib.inf
@@ -342,6 +343,7 @@
         <PcdsFixedAtBuild>
           !include CryptoPkg/Driver/Bin/Crypto.pcd.TINY_SHA.inc.dsc
     }
+    
 
   [Components.X64]
     CryptoPkg/Driver/CryptoDxe.inf {
@@ -362,7 +364,10 @@
         <PcdsFixedAtBuild>
           !include CryptoPkg/Driver/Bin/Crypto.pcd.STANDARD.inc.dsc
     }
+    
+
 !endif
+
 
 [LibraryClasses]
   # Platform Runtime Mechanism (PRM) libraries
@@ -916,6 +921,7 @@
 
 [Components.IA32]
   QemuQ35Pkg/ResetVector/ResetVector.inf
+  QemuQ35Pkg/PeiModule/HelloWorld/HelloWorldPei.inf
 
   #########################################
   # SEC Phase modules
@@ -1065,6 +1071,8 @@
   }
 
   MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
+  QemuQ35Pkg/DxeDrivers/HelloWorld/HelloWorldDxe.inf
+  QemuQ35Pkg/DxeDrivers/ConsoleMsgDxe/ConsoleMsgDxe.inf
 
   MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf {
     <LibraryClasses>

@@ -46,10 +46,10 @@ class CommonPlatform():
     ''' Common settings for this platform.  Define static data here and use
         for the different parts of stuart
     '''
-    PackagesSupported = ("QemuQ35Pkg",)
+    PackagesSupported = ("QemuQ35Pkg","SkylakePkg")
     ArchSupported = ("IA32", "X64")
     TargetsSupported = ("DEBUG", "RELEASE", "NOOPT")
-    Scopes = ('qemu', 'qemuq35', 'edk2-build', 'cibuild', 'configdata')
+    Scopes = ('qemu', 'qemuq35', 'edk2-build', 'cibuild', 'configdata','Skylake')
     WorkspaceRoot = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     PackagesPath = (
         "Platforms",
@@ -59,7 +59,9 @@ class CommonPlatform():
         "Common/MU_OEM_SAMPLE",
         "Features/DFCI",
         "Features/CONFIG",
-        "Features/MM_SUPV"
+        "Features/MM_SUPV",
+        "Silicon/Arm/MU_TIANO",
+        "Silicon/Arm/TFA"
     )
 
     @staticmethod
@@ -129,6 +131,8 @@ class SettingsManager(UpdateSettingsManager, SetupSettingsManager, PrEvalSetting
             RequiredSubmodule("Features/DFCI", True),
             RequiredSubmodule("Features/CONFIG", True),
             RequiredSubmodule("Features/MM_SUPV", True),
+            RequiredSubmodule("Silicon/Arm/MU_TIANO", True),
+            RequiredSubmodule("Silicon/Arm/TFA", True),
         ]
 
     def SetArchitectures(self, list_of_requested_architectures):
