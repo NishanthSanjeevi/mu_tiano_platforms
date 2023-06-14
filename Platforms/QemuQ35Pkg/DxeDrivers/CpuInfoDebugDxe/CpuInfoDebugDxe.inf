@@ -1,6 +1,6 @@
-## @file ConsoleMsgDxe.inf
+## @file CpuInfoDebugDxe.inf
 #
-# Console Msg DXE Driver
+# Cpu Info Debug Dxe
 #
 #Copyright (c) Microsoft Corportaion. All rights reserved.
 #
@@ -8,23 +8,26 @@
 
 [Defines]
    INF_VERSION       = 1.27
-   BASE_NAME         = ConsoleMsgDxe
+   BASE_NAME         = CpuInfoDebugDxe
    FILE_GUID         = F5E4F8D3-9975-4263-8BB5-67178988429E
    VERSION_STRING    = 1.0
    MODULE_TYPE       = DXE_DRIVER
-   ENTRY_POINT       = ConsoleMsgEntryPoint
+   ENTRY_POINT       = CpuInfoDebugDxeEntryPoint
 
 [Sources]
-  ConsoleMsgDxe.c 
+  CpuInfoDebugDxe.c 
 
 [Packages]
   MdePkg/MdePkg.dec
   QemuQ35Pkg/QemuQ35Pkg.dec
   MdeModulePkg/MdeModulePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
 
 [LibraryClasses]
   DebugLib
   UefiLib
+  BaseLib
+  PrintLib
   UefiDriverEntryPoint
   UefiBootServicesTableLib
 

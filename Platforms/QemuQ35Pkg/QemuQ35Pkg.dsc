@@ -921,7 +921,6 @@
 
 [Components.IA32]
   QemuQ35Pkg/ResetVector/ResetVector.inf
-  QemuQ35Pkg/PeiModule/HelloWorld/HelloWorldPei.inf
 
   #########################################
   # SEC Phase modules
@@ -1071,8 +1070,7 @@
   }
 
   MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-  QemuQ35Pkg/DxeDrivers/HelloWorld/HelloWorldDxe.inf
-  QemuQ35Pkg/DxeDrivers/ConsoleMsgDxe/ConsoleMsgDxe.inf
+  QemuQ35Pkg/DxeDrivers/CpuInfoDebugDxe/CpuInfoDebugDxe.inf
 
   MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf {
     <LibraryClasses>
