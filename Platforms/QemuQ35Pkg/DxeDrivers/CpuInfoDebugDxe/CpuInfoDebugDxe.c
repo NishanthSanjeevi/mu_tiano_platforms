@@ -129,6 +129,6 @@ CpuInfoDebugDxeEntryPoint (
     DEBUG ((DEBUG_INFO, "[%a] - CPU Brand Name\n", GetCpuBrandString()));
     DEBUG ((DEBUG_INFO, "[%x] - Family Id\n", GetCpuIdFamiyEaxString()));
     DEBUG ((DEBUG_INFO, "[%x] - Stepping\n", GetCpuSteppingId()));
-    DEBUG ((DEBUG_INFO, "[%x] - Model\n", GetCpuFamilyModel()));
+    DEBUG ((DEBUG_INFO, "[%x] - Model Id\n", GetCpuFamilyModel()));
     return EFI_SUCCESS;
 }
