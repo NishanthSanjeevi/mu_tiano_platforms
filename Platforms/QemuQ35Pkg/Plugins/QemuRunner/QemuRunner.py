@@ -105,16 +105,13 @@ class QemuRunner(uefi_helper_plugin.IUefiHelperPlugin):
         else:
             args += " -m 2048"
 
-        # TODO: Add more documentation
         cpu_model = env.GetValue("CPU_MODEL")
         if cpu_model is None:
             cpu_model = "qemu64"
 
         logging.log(logging.INFO, "CPU model: " + cpu_model)
 
-        # TODO: Remove these comments
         #args += " -cpu qemu64,+rdrand,umip,+smep,+popcnt" # most compatible x64 CPU model + RDRAND + UMIP + SMEP +POPCNT support (not included by default)
-        # args += " -cpu qemu64,rdrand=on,umip=on,smep=on,pdpe1gb=on,popcnt=on" # most compatible x64 CPU model + RDRAND + UMIP + SMEP + PDPE1GB + POPCNT support (not included by default)
         cpu_arg = " -cpu " + cpu_model + ",rdrand=on,umip=on,smep=on,pdpe1gb=on,popcnt=on"
         args += cpu_arg
 
