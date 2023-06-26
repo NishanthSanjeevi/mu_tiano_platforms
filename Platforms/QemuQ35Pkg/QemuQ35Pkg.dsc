@@ -1073,6 +1073,9 @@
 
   MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
 
+  # CPU branding information
+  QemuQ35Pkg/CpuInfoDxe/CpuInfoDxe.inf
+
   MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf {
     <LibraryClasses>
       NULL|SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.inf
